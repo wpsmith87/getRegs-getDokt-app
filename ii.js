@@ -59,17 +59,16 @@ function getMoreDataFromAPI(searchTerm, callback){
   var queri = {
         api_key: 'dhtjxRZF7HyxcgZCCUDKf556TxqUMoipvT1sTPPs',
         docketId: searchTerm,
-        error: function (errormessage) {
-               alert('Unfortunately this content is not available yet, the requested Docket "belongs" to an agency that is full of lazy slobs that do not participate in the eRulemaking Program. Honestly, getRegs/getDokt is disgusted that your tax dollars have been wasted.');
-            //$('.js-errorMessage').html(errMsg);
-          }
+        //statusCode:  { 400: function() { alert("page not found"); }, 200: function() { console.log("LOADED"); }
+      //}
+
     }
     //////
      console.log('LOADED');
      /////
      console.log(searchTerm);
      //////
-    $.getJSON(DOKT_SEARCH_URL, queri, callback) ; 
+    $.getJSON(DOKT_SEARCH_URL, queri, callback).fail(function() { $('.js-resultMessage').text("Unfortunately this content is not available yet, the requested Docket belongs to an agency that does not participate in the Federal eRulemaking Program."); }); 
 
 
 }
@@ -102,13 +101,22 @@ console.log('LOADED')
 
 function displayDoktSearchData(data) {
    console.log(data)
+
+
+//if (!data) {
+//alert('Unfortunately this content is not available yet, the requested Docket "belongs" to an agency that is full of lazy slobs that do not participate in the eRulemaking Program. Honestly, getRegs/getDokt is disgusted that your tax dollars have been wasted.');
+//}
+
+
    console.log(data.docketAbstract)
   addItem(state,data);
   var results = state.items.map(function(item, index) {
     console.log(item);
+
     return renderDoktResult(item);
   });
-  $('.js-doktsearch-results').html(results); 
+  $('.js-doktsearch-results').html(results);
+  $('.js-resultMessage').text('Your Docket Seach is ready! Scroll down.') 
 }
 
 

@@ -236,6 +236,12 @@ font-size: 18px;
 .footer p { margin-bottom: 10px }
 
 
+.js-resultMessage {
+font-size: 20px;
+color: red;
+}
+
+
 /* media */
 
 
