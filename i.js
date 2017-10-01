@@ -56,7 +56,6 @@ var RESULT_HTML_TEMPLATE = (
 );
 
 
-
 function getDataFromAPI(searchTerm, callback){
     var query = {  
         api_key: 'dhtjxRZF7HyxcgZCCUDKf556TxqUMoipvT1sTPPs',
@@ -73,7 +72,7 @@ function getDataFromAPI(searchTerm, callback){
      /////
      console.log(searchTerm);
      //////
-    $.getJSON(DOC_SEARCH_URL, query, callback);    
+    $.getJSON(DOC_SEARCH_URL, query, callback);  
 }
 
 

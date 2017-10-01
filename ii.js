@@ -59,6 +59,7 @@ var RESULT_HTML_TEMPLATE = (
     );
 
 
+
 function getMoreDataFromAPI(searchTerm, callback){
   var queri = {
         api_key: 'dhtjxRZF7HyxcgZCCUDKf556TxqUMoipvT1sTPPs',
@@ -72,6 +73,7 @@ function getMoreDataFromAPI(searchTerm, callback){
     $.getJSON(DOKT_SEARCH_URL, queri, callback).fail(function() { 
       $(theForm).find(".js-resultMessage").hide();
       $('.js-errorMessage').text("Unfortunately this content is not available yet, and/or, the requested Docket belongs to an agency that does not participate in the Federal eRulemaking Program."); 
+
        }); 
 
 
@@ -149,5 +151,8 @@ function watchSubmito() {
     getMoreDataFromAPI(queri, displayDoktSearchData);
   });
 }
+
+
+
 $(watchSubmito);
 
