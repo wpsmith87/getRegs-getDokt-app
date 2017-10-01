@@ -25,6 +25,10 @@ var state = {
     items: []
 };
 
+var counter = 0
+
+var theForm = $(document).find(".js-doktsearch-form");
+
 /// url var
 
 var DOKT_SEARCH_URL = 'https://cors-anywhere.herokuapp.com/https://api.data.gov/regulations/v3/docket.json';
@@ -33,9 +37,10 @@ var DOKT_SEARCH_URL = 'https://cors-anywhere.herokuapp.com/https://api.data.gov/
 
 var RESULT_HTML_TEMPLATE = (
 
-'<div class="row">' +
 
-'<div class="js-doktresult-form">' +
+'<div class="js-doktresult-form" value="'+ counter +'">' +
+'<button class="deleteDokt">'+'Delete Docket'+'</button>'+
+'<h2>Search Number:</h2>'+'<p><span class="searchNum"></span></p>'+
  '<br>'+
 '<h2>Title:</h2>' + ' ' + '<p><span class="js-title"></span></p>' +
 '<h2>Docket ID:</h2>' + ' ' + '<p><span class="js-docketId"></span></p>' +
@@ -48,9 +53,8 @@ var RESULT_HTML_TEMPLATE = (
 '<h2>Abstract:</h2>' + ' ' + '<p><span class="js-abstract"></span></p>'+
 '<h2>Number of Comments:</h2>' + ' ' + '<p><span class="js-commentNum"></span></p>'+
 '<br>'+
-'</div>'+
-
 '</div>'
+
 
     );
 
@@ -58,17 +62,17 @@ var RESULT_HTML_TEMPLATE = (
 function getMoreDataFromAPI(searchTerm, callback){
   var queri = {
         api_key: 'dhtjxRZF7HyxcgZCCUDKf556TxqUMoipvT1sTPPs',
-        docketId: searchTerm,
-        //statusCode:  { 400: function() { alert("page not found"); }, 200: function() { console.log("LOADED"); }
-      //}
-
+        docketId: searchTerm
     }
     //////
      console.log('LOADED');
      /////
      console.log(searchTerm);
      //////
-    $.getJSON(DOKT_SEARCH_URL, queri, callback).fail(function() { $('.js-resultMessage').text("Unfortunately this content is not available yet, the requested Docket belongs to an agency that does not participate in the Federal eRulemaking Program."); }); 
+    $.getJSON(DOKT_SEARCH_URL, queri, callback).fail(function() { 
+      $(theForm).find(".js-resultMessage").hide();
+      $('.js-errorMessage').text("Unfortunately this content is not available yet, and/or, the requested Docket belongs to an agency that does not participate in the Federal eRulemaking Program."); 
+       }); 
 
 
 }
@@ -80,9 +84,16 @@ var addItem = function(state, item) {
 
 function renderDoktResult(item) {
   var template = $(RESULT_HTML_TEMPLATE);
+
+  //template.find(".js-doktInfo").text(item[0]);
+  template.find(".searchNum").text(counter+1);
   template.find(".js-title").text(item.title);
   template.find(".js-docketId").text(item.docketId);
-  template.find(".js-majorRule").text(item.majorRule.value);
+
+  if (item.majorRule.value!=undefined) {
+template.find(".js-majorRule").text(item.majorRule.value);
+}
+
   template.find(".js-impact").text(item.impactsAndEffects);
   template.find(".js-postAgent").text(item.agency);
   template.find(".js-parentAgent").text(item.parentAgency);
@@ -91,34 +102,41 @@ function renderDoktResult(item) {
   template.find(".js-city").text(item.contact[0].city);
   template.find(".js-stage").text(item.agendaStageOfRulemaking.value);
   template.find(".js-abstract").text(item.docketAbstract);
-  template.find(".js-commentNum").text(item.numberOfComments);
-  
+  template.find(".js-commentNum").text(item.numberOfComments); 
 console.log('LOADED')
-
   return template;
 }
 
 
 function displayDoktSearchData(data) {
    console.log(data)
-
-
-//if (!data) {
-//alert('Unfortunately this content is not available yet, the requested Docket "belongs" to an agency that is full of lazy slobs that do not participate in the eRulemaking Program. Honestly, getRegs/getDokt is disgusted that your tax dollars have been wasted.');
-//}
-
-
    console.log(data.docketAbstract)
   addItem(state,data);
   var results = state.items.map(function(item, index) {
     console.log(item);
-
     return renderDoktResult(item);
   });
+  $(theForm).find(".js-resultMessage").show();
   $('.js-doktsearch-results').html(results);
+  $(theForm).find(".js-errorMessage").hide();
   $('.js-resultMessage').text('Your Docket Seach is ready! Scroll down.') 
+  console.log(counter);
+  counter++
+  $(watchDelete);
+
 }
 
+
+function watchDelete() {
+
+  $(".deleteDokt").click(function () { 
+      var index = $(this).closest('.js-doktresult-form').attr('value');
+      $(this).closest('div').remove();
+      state.items.splice(index,1);
+      $(theForm).find(".js-resultMessage").hide();
+       });
+
+}
 
 function watchSubmito() {
    $('.js-doktsearch-form').submit(function(event) {
@@ -127,9 +145,9 @@ function watchSubmito() {
   var queri = queriTarget.val();
     // clear out the input
     queriTarget.val("");
+    $(theForm).find(".js-errorMessage").show();
     getMoreDataFromAPI(queri, displayDoktSearchData);
   });
 }
 $(watchSubmito);
-
 

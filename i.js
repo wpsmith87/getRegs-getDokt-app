@@ -41,7 +41,7 @@ var RESULT_HTML_TEMPLATE = (
 '<div class="js-result-form">' +
  '<br>'+
 '<h2>Title:</h2>' + ' ' + '<p><span class="js-title"></span></p>' +
-'<h2>Docket ID:</h2>' + ' ' + '<p><span class="js-docketId"></span></p>' + ' ' + '<h6>Copy the Docket ID above and use <a href="dokt.html" target="_blank">getDokt</a> for more details.</h6>' +
+'<h2>Docket ID:</h2>' + ' ' + '<p><span class="js-docketId"></span></p>' + ' ' + '<h6>Copy the Docket ID and use <a href="dokt.html" target="_blank">getDokt</a> for more details.</h6>' +
 '<h2>Posted Date:</h2>' + ' ' + '<p><span class="js-postDate"></span></p>' +
 '<h2>Agency:</h2>' + ' ' + '<p><span class="js-postAgent"></span></p>' +
 '<h2>Open for Comment:</h2>' + ' ' + '<p><span class="js-comment"></span></p>' +

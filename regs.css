@@ -238,9 +238,21 @@ font-size: 18px;
 
 .js-resultMessage {
 font-size: 20px;
+color: green;
+}
+
+.js-errorMessage {
+font-size: 20px;
 color: red;
 }
 
+.deleteDokt {
+
+    background-color: #37474F;
+    border-radius: 5px;
+    color: #eee;
+    float: right;
+}
 
 /* media */
 
