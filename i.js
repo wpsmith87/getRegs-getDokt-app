@@ -66,13 +66,19 @@ function getDataFromAPI(searchTerm, callback){
         dkt: 'R',
         pd: days,
         rpp: 25
+
     }
     //////
      console.log('LOADED');
      /////
      console.log(searchTerm);
      //////
-    $.getJSON(DOC_SEARCH_URL, query, callback);  
+
+     
+
+    $.getJSON(DOC_SEARCH_URL, query, callback); 
+
+   
 }
 
 
@@ -103,11 +109,17 @@ function displaySearchData(data) {
   });
 $('.js-search-results').html(results); 
 $('.js-resultSumms').text('Total Number of Records:' + ' ' + totalRecords);
+$(".loader").hide();
 }
 
+function hideLoader() {
+  $(".loader").hide();
+}
 
 function watchSubmit() {
+  hideLoader();
   $('.js-search-form').submit(function(event) {
+    $(".loader").show();
     event.preventDefault();
     var queryTarget = $(event.currentTarget).find('.js-query-text');
     var query = queryTarget.val();
@@ -115,7 +127,6 @@ function watchSubmit() {
     queryTarget.val("");
     getDataFromAPI(query, displaySearchData);
   });
-
 }
 $(watchSubmit);
 

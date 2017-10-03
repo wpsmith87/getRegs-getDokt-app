@@ -3,14 +3,20 @@
 <head>
 	<title>getRegs</title>
     <meta charset="utf-8"/>
+    <script src="https://use.fontawesome.com/6a7917b751.js"></script><link href="https://use.fontawesome.com/6a7917b751.css" media="all" rel="stylesheet">
     <link rel="stylesheet" href="regs.css" />
      <link rel="stylesheet" href="float-grid.css" />
      <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
-     
+      <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="paperclip.png">
 </head>
 
 <body>
 
+	<header class="sectionContainer">
+		
+<h1 class="logo">getRegs</h1><p class="menu-p">Try our <a href="dokt.html" target="_blank">getDokt</a> App</p>
+	</header>
 <div class="row">
 <div class="col-12">
 <div class="box">
@@ -19,7 +25,7 @@
 <legend>getRegs</legend>
 
 	<label for="js-query-text">Search Federal Rulemaking Regulations by any keyword(s) or agency.</label>
-	<p>If you have a Docket ID already, try our <a href="dokt.html" target="_blank">getDokt</a> app.</p>
+	
 	<br>
 	<input type="text" name="js-query-text" class="js-query-text" placeholder="e.g. Property, IRS...">
 
@@ -27,6 +33,36 @@
 
 	<p>Click Search then scroll for the 25 most recent results below</p>
 <br>
+
+	
+<!-- loader -->
+<div class="loader loader--style5" title="4">
+	<p>Retrieving Document...</p>
+	<br>
+  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+    <rect x="0" y="0" width="4" height="10" fill="#333">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="10" y="0" width="4" height="10" fill="#333">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0.2s" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="20" y="0" width="4" height="10" fill="#333">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0.4s" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+  </svg>
+</div>
+<!--  end loader  -->
+
 	<span class="js-resultSumms"></span>
 
 </form>

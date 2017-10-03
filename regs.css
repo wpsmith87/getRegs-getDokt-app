@@ -10,16 +10,55 @@ body {
     font-family: 'Dosis', sans-serif;
     padding: 0;
     margin: 0;
-    padding-top: 20px;
+    padding-top: 60px;
 }
 
+
+header {
+    background: #BFC9CA;
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+    height: fit-content;
+    left: 0;
+    top: 0;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border: 2px solid #37474F;
+
+}
+
+h1.logo {
+    display: inline-block;
+    color: #263238;
+    padding-left: 10px;
+}
+
+
 p {
-    color: #37474F;
+    color: #263238;
+}
+
+.menu-p {
+    display: inline-block;
+    color: #263238;
+    float: right;
+    padding-right: 10px;
+    vertical-align: middle;
+   margin-top: 36px;
+}
+
+.menu-p a {
+    color: #263238;
+}
+
+.menu-p a:hover {
+    color: #eee;
 }
 
 label {
     color: #37474F;
     font-size: 20px;
+
 }
 
 form a {
@@ -31,6 +70,7 @@ font-weight: 600px;
 form a:hover {
     color: black;
 }
+
 
 /*  Search Form  */
 
@@ -53,6 +93,7 @@ form a:hover {
     font-size: 64px;
     line-height: 38px;
     letter-spacing: 0;
+    display: inline-block;
 }
 
 .js-doktsearch-form {
@@ -254,6 +295,26 @@ color: red;
     float: right;
 }
 
-/* media */
+/* loader */
+
+
+.loader{
+  margin: 0 0 2em;
+  height: 100px;
+  width: 20%;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/*
+  Set the color of the icon
+*/
+svg path,
+svg rect{
+  fill: #37474F;
+}
 
 

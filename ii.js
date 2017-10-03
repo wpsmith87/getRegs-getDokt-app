@@ -72,6 +72,7 @@ function getMoreDataFromAPI(searchTerm, callback){
      //////
     $.getJSON(DOKT_SEARCH_URL, queri, callback).fail(function() { 
       $(theForm).find(".js-resultMessage").hide();
+      hideLoader();
       $('.js-errorMessage').text("Unfortunately this content is not available yet, and/or, the requested Docket belongs to an agency that does not participate in the Federal eRulemaking Program."); 
 
        }); 
@@ -118,6 +119,7 @@ function displayDoktSearchData(data) {
     console.log(item);
     return renderDoktResult(item);
   });
+  hideLoader();
   $(theForm).find(".js-resultMessage").show();
   $('.js-doktsearch-results').html(results);
   $(theForm).find(".js-errorMessage").hide();
@@ -140,8 +142,18 @@ function watchDelete() {
 
 }
 
+function hideLoader() {
+  $(".loader").hide();
+}
+
+
 function watchSubmito() {
+  hideLoader();
+
    $('.js-doktsearch-form').submit(function(event) {
+      $(theForm).find(".js-errorMessage").hide();
+  $(theForm).find(".js-resultMessage").hide();
+    $(".loader").show();
     event.preventDefault();
   var queriTarget = $(event.currentTarget).find('.js-doktquery-text');
   var queri = queriTarget.val();
