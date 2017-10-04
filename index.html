@@ -6,7 +6,7 @@
     <script src="https://use.fontawesome.com/6a7917b751.js"></script><link href="https://use.fontawesome.com/6a7917b751.css" media="all" rel="stylesheet">
     <link rel="stylesheet" href="regs.css" />
      <link rel="stylesheet" href="float-grid.css" />
-     <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
       <!-- Favicon -->
   <link rel="shortcut icon" type="image/png" href="paperclip.png">
 </head>
@@ -15,29 +15,30 @@
 
 	<header class="sectionContainer">
 		
-<h1 class="logo">getRegs</h1><p class="menu-p">Try our <a href="dokt.html" target="_blank">getDokt</a> App</p>
+<i class="icon fa fa-paperclip fa-3x" aria-hidden="true"></i><h1 class="logo">getRegs</h1><p class="menu-p">Try our <a href="dokt.html" target="_blank">getDokt</a> App</p>
 	</header>
 <div class="row">
 <div class="col-12">
 <div class="box">
 <form class="js-search-form" accept-charset="UTF-8" action="#">
 
-<legend>getRegs</legend>
+<!--<legend>getRegs</legend>-->
 
-	<label for="js-query-text">Search Federal Rulemaking Regulations by any keyword(s) or agency.</label>
+	<label for="js-query-text">Search IRS Rulemaking Regulations in the past 30 years, by any keyword(s).</label>
+
 	
 	<br>
-	<input type="text" name="js-query-text" class="js-query-text" placeholder="e.g. Property, IRS...">
+	<input  name="js-query-text" class="js-query-text">
 
 	<input type="submit" name="" class="js-submit" value="Search">
 
-	<p>Click Search then scroll for the 25 most recent results below</p>
+	<p>Click Search then scroll for the 20 most recent results below</p>
 <br>
 
 	
 <!-- loader -->
 <div class="loader loader--style5" title="4">
-	<p>Retrieving Document...</p>
+	<p>Retrieving Documents...</p>
 	<br>
   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
      width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
@@ -70,12 +71,14 @@
   </div>
 <br>
 
+
+</div>
+
+
+</div>
+<br>
+
 <div class="js-search-results"></div>
-</div>
-
-
-</div>
-
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="i.js" type="text/javascript"></script>

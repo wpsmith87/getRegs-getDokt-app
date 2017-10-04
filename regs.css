@@ -6,16 +6,17 @@ body * {
 
 
 body {
-    background: /*#DCEDC8*/ #DCEDC8;
-    font-family: 'Dosis', sans-serif;
+    background: /*#DCEDC8*/ #e5f5f7;
+    font-family: 'Nunito', sans-serif;
     padding: 0;
     margin: 0;
     padding-top: 60px;
+    color: #37474f;
 }
 
 
 header {
-    background: #BFC9CA;
+    background: #37474f;
     position: fixed;
     z-index: 3;
     width: 100%;
@@ -24,13 +25,19 @@ header {
     top: 0;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     border: 2px solid #37474F;
+}
 
+.icon {
+       color: #e5f5f7;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 h1.logo {
-    display: inline-block;
-    color: #263238;
+       display: inline-block;
+    color: #e5f5f7;
     padding-left: 10px;
+    margin-bottom: -5px;
 }
 
 
@@ -40,15 +47,16 @@ p {
 
 .menu-p {
     display: inline-block;
-    color: #263238;
+    color: #e5f5f7;
     float: right;
     padding-right: 10px;
     vertical-align: middle;
-   margin-top: 36px;
+    margin-top: 36px;
 }
 
 .menu-p a {
-    color: #263238;
+    color: #e5f5f7;
+    text-decoration: none;
 }
 
 .menu-p a:hover {
@@ -78,11 +86,11 @@ form a:hover {
     margin: 0 auto;
     width: 100%;
     height: 100%;
-    padding: 100px;
-    border: 2px solid #37474F;
+    padding: 20px;
+    /* border: 2px solid #37474F; */
     border-radius: 3px;
-    background: #BFC9CA;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    /* background: rgba(0, 0, 0, 0); */
+    /* box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); */
 }
 
 .js-search-form legend {
@@ -100,11 +108,11 @@ form a:hover {
     margin: 0 auto;
     width: 100%;
     height: 100%;
-    padding: 100px;
-    border: 2px solid #37474F;
+    padding: 20px;
+    /* border: 2px solid #37474F; */
     border-radius: 3px;
-    background: #BFC9CA;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    /* background: rgba(0, 0, 0, 0); */
+    /* box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); */
 }
 
 .js-doktsearch-form legend {
@@ -117,17 +125,51 @@ form a:hover {
     letter-spacing: 0;
 }
 
+input.js-query-text {
+    border: 1px solid #37474f;
+    /* font-weight: bold; */
+    font-size: 22px;
+    /* text-align: center; */
+    cursor: pointer;
+    margin-bottom: 0;
+    height: auto;
+    width: 100%;
+    border-radius: 2px;
+    margin-top: 15px;
+    font-family: inherit;
+}
+
+input.js-doktquery-text {
+    border: 1px solid #37474f;
+    /* font-weight: bold; */
+    font-size: 22px;
+    /* text-align: center; */
+    cursor: pointer;
+    margin-bottom: 0;
+    height: auto;
+    width: 100%;
+    border-radius: 2px;
+    margin-top: 15px;
+    font-family: inherit;
+}
+
 /*  Result Form  */
 
 .js-result-form {
     margin-bottom: 10px;
-    width: 100%;
-    height: 100%;
-    padding: 50px;
+    width: 80%;
+    /* height: min-content; */
+    padding: 30px;
     border: 2px solid #37474F;
-    border-radius: 3px;
-    background: #BFC9CA;
+    border-radius: 5px;
+    background: #fff;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    margin: auto;
+}
+
+.js-result-form span {
+    font-size: 14px;
+
 }
 
 .js-result-form a {
@@ -150,13 +192,14 @@ font-weight: 600px;
 
 .js-doktresult-form {
     margin-bottom: 10px;
-    width: 100%;
-    height: 100%;
-    padding: 50px;
+    width: 80%;
+    /* height: min-content; */
+    padding: 30px;
     border: 2px solid #37474F;
-    border-radius: 3px;
-    background: #BFC9CA;
+    border-radius: 5px;
+    background: #fff;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    margin: auto;
 }
 
 .js-doktresult-form a {
@@ -179,9 +222,8 @@ font-weight: 600px;
 
 /* Search Form Inputs */
 
-input[type='text'],
-input[type='submit']{
-    font-family: 'Dosis', sans-serif;
+input[type='submit'] {
+    font-family: inherit;
     background: #F1F8E9;
     border: 2px solid #37474F;
     margin: 20px auto;
@@ -195,7 +237,6 @@ input[type='submit']{
     height: auto;
 }
 
-input[type='text']:focus,
 input[type='submit']:focus {
     border-color: #263238;
     outline-color: #263238;
@@ -203,18 +244,19 @@ input[type='submit']:focus {
 }
 
 input[type='submit'] {
-    color: white;
+    color: #e5f5f7;
     background: #37474F;
     border: 0;
     font-weight: bold;
     font-size: 22px;
     text-align: center;
     cursor: pointer;
-    margin-bottom: 0;
+    margin-bottom: 10px;
     height: auto;
 }
 
 input:hover[type='submit'] {
+    color: ;
     background-color: #263238;
     -webkit-transition: background 0.1s;
     -moz-transition: background 0.1s;
@@ -245,17 +287,25 @@ input:hover[type='submit'] {
 /*  Result Form Text  */
 
 .js-result-form h2 {
-font-size: 18px;
+    font-size: 18px;
     line-height: 36px;
     letter-spacing: 0;
-
+    border-bottom: 3px solid#37474f;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.06);
+    padding-left: 5px;
+    border-radius: 2px;
 }
 
 .js-doktresult-form h2 {
 font-size: 18px;
     line-height: 36px;
     letter-spacing: 0;
-
+    border-bottom: 3px solid#37474f;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.06);
+    padding-left: 5px;
+    border-radius: 2px;
 }
 
 /* Footer */
@@ -278,13 +328,13 @@ font-size: 18px;
 
 
 .js-resultMessage {
-font-size: 20px;
-color: green;
+font-size: 15px;
+color: #37474f;
 }
 
 .js-errorMessage {
-font-size: 20px;
-color: red;
+font-size: 15px;
+color: #CD5C5C;
 }
 
 .deleteDokt {
@@ -318,3 +368,65 @@ svg rect{
 }
 
 
+/*        */
+
+
+
+input, button {
+  float: left;
+  font-size: 1em;
+  padding: 3px 6px;
+  margin: 0;
+  border: 1px solid #333;
+  outline: 0;
+  box-shadow: none;
+}
+
+::-moz-focus-inner { 
+  padding: 0;
+  border: 0;
+}
+
+input {
+  width: 15em;
+  background-color: #fff;
+  border-right: 0 none;
+  border-radius: 3px 0 0 3px;
+}
+
+button {
+  position: relative;
+  background-color: #eee;
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+}
+
+.copied::after {
+  position: absolute;
+  top: 12%;
+  right: 110%;
+  display: block;
+  content: "copied";
+  font-size: 0.75em;
+  padding: 2px 3px;
+  color: #fff;
+  background-color: #22a;
+  border-radius: 3px;
+  opacity: 0;
+  will-change: opacity, transform;
+  animation: showcopied 1.5s ease;
+}
+
+@keyframes showcopied {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+  }
+}

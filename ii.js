@@ -38,9 +38,10 @@ var DOKT_SEARCH_URL = 'https://cors-anywhere.herokuapp.com/https://api.data.gov/
 var RESULT_HTML_TEMPLATE = (
 
 
+'<div class="row">' +
 '<div class="js-doktresult-form" value="'+ counter +'">' +
 '<button class="deleteDokt">'+'Delete Docket'+'</button>'+
-'<h2>Search Number:</h2>'+'<p><span class="searchNum"></span></p>'+
+//'<h2>Search Number:</h2>'+'<p><span class="searchNum"></span></p>'+
  '<br>'+
 '<h2>Title:</h2>' + ' ' + '<p><span class="js-title"></span></p>' +
 '<h2>Docket ID:</h2>' + ' ' + '<p><span class="js-docketId"></span></p>' +
@@ -53,7 +54,8 @@ var RESULT_HTML_TEMPLATE = (
 '<h2>Abstract:</h2>' + ' ' + '<p><span class="js-abstract"></span></p>'+
 '<h2>Number of Comments:</h2>' + ' ' + '<p><span class="js-commentNum"></span></p>'+
 '<br>'+
-'</div>'
+'</div>'+
+'<br>'
 
 
     );
@@ -89,7 +91,7 @@ function renderDoktResult(item) {
   var template = $(RESULT_HTML_TEMPLATE);
 
   //template.find(".js-doktInfo").text(item[0]);
-  template.find(".searchNum").text(counter+1);
+  //template.find(".searchNum").text(item.counter+1);
   template.find(".js-title").text(item.title);
   template.find(".js-docketId").text(item.docketId);
 
@@ -151,15 +153,14 @@ function watchSubmito() {
   hideLoader();
 
    $('.js-doktsearch-form').submit(function(event) {
-      $(theForm).find(".js-errorMessage").hide();
-  $(theForm).find(".js-resultMessage").hide();
+      $(".js-errorMessage").hide();
     $(".loader").show();
     event.preventDefault();
   var queriTarget = $(event.currentTarget).find('.js-doktquery-text');
   var queri = queriTarget.val();
     // clear out the input
     queriTarget.val("");
-    $(theForm).find(".js-errorMessage").show();
+    $(".js-errorMessage").show();
     getMoreDataFromAPI(queri, displayDoktSearchData);
   });
 }
