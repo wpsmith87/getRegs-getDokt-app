@@ -31,6 +31,14 @@ console.log(today);
 
 console.log(backDate)
 
+/// state
+
+var state = {
+    items: []
+};
+
+var counter = 0
+
 /// dct: type default var 
 
 var type = 'FR';
@@ -48,9 +56,9 @@ var DOC_SEARCH_URL = 'https://cors-anywhere.herokuapp.com/https://api.data.gov/r
 var RESULT_HTML_TEMPLATE = (
 
 
-'<div class="row">' +
 
-'<div class="js-result-form">' +
+'<div class="js-result-form w3-animate-opacity" value="'+ counter +'">' +
+'<button class="deleteDoc">'+'Delete Document'+'</button>'+
  '<br>'+
 '<h2>Title</h2>' + '<p><span class="js-title"></span></p>' +
 '<h2>Docket ID</h2>' + ' ' + '<input id="js-docketId" class="js-docketId"/><button onclick="openDocketSearch()" class="autoSearch" data-copytarget="#js-docketId">COPY</button>' + 
@@ -61,10 +69,8 @@ var RESULT_HTML_TEMPLATE = (
 '<h2>Open for Comment</h2>' + ' ' + '<p><span class="js-comment"></span></p>' +
 '<h2>Summary</h2>' + ' ' + '<p><span class="js-summary"></span></p>'+
 '<br>'+
-'</div>'+
+'</div>'
 
-'</div>'+
-'<br>'
 
 
 
@@ -96,6 +102,10 @@ function getDataFromAPI(searchTerm, callback){
    
 }
 
+var addItem = function(state, item) {
+    state.items.push(item);
+};
+
 
 function renderResult(item) {
   
@@ -120,12 +130,15 @@ function displaySearchData(data) {
    console.log(length)
   var results = data.documents.map(function(item, index) {
   	console.log(item);
+    addItem(state,data);
       return renderResult(item);
   });
 $('.js-search-results').html(results); 
 $('.js-resultSumms').text('Total Number of Records:' + ' ' + totalRecords);
 $('.js-resultSumms').show();
 $(".loader").hide();
+  counter++
+  $(watchDelete);
 }
 
 function hideLoader() {
@@ -133,11 +146,7 @@ function hideLoader() {
 }
 
 function openDocketSearch() {
-   // var doktIdTarget = $(event.currentTarget).find('.js-docketId');
-    // var doktId = doktIdTarget.val();
-   $('.js-docketId').on("click", function(){
 
-});
     var myWindow = window.open("dokt.html", "_blank");
 
 }
@@ -173,8 +182,8 @@ function copyTarget() {
         inp.blur();
         
         // copied animation
-        t.classList.add('copied');
-        setTimeout(function() { t.classList.remove('copied'); }, 1500);
+      //  t.classList.add('copied');
+        //setTimeout(function() { t.classList.remove('copied'); }, 1500);
       }
       catch (err) {
         alert('please press Ctrl/Cmd+C to copy');
@@ -185,6 +194,16 @@ function copyTarget() {
   }
 
 })();
+
+}
+
+function watchDelete() {
+
+  $(".deleteDoc").click(function () { 
+      var index = $(this).closest('.js-result-form').attr('value');
+      $(this).closest('div','br').remove();
+      state.items.splice(index,1);
+       });
 
 }
 

@@ -4,6 +4,7 @@
 	<title>getDokt</title>
     <meta charset="utf-8"/>
     <script src="https://use.fontawesome.com/6a7917b751.js"></script><link href="https://use.fontawesome.com/6a7917b751.css" media="all" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="regs.css" />
      <link rel="stylesheet" href="float-grid.css" />
      <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -18,7 +19,7 @@
 	</header>
 
 <div class="row">
-<div class="col-12">
+<div class="col-12 w3-animate-top">
 <div class="box">
 <form class="js-doktsearch-form" accept-charset="UTF-8" action="#">
 
@@ -26,8 +27,8 @@
 
 	<label for="js-doktquery-text">Paste a Docket ID for a more detailed search of the corresponding document.</label>
 	<p>Some Dockets may not be available.</p>
-	<br>
-	<input name="js-doktquery-text" class="js-doktquery-text">
+
+	<input name="js-doktquery-text" class="js-doktquery-text" placeholder="Paste Docket ID here">
 
 	<input type="submit" name="" class="js-submito" value="Search">
 
@@ -64,8 +65,8 @@
 </div>
 <!--  end loader  -->
 
-	<span class="js-resultMessage"></span>
-	<span class="js-errorMessage"></span>
+	<span class="js-resultMessage w3-animate-opacity"></span>
+	<span class="js-errorMessage w3-animate-opacity"></span>
 
 </form>
 

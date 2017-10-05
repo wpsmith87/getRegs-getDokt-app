@@ -39,7 +39,7 @@ var RESULT_HTML_TEMPLATE = (
 
 
 '<div class="row">' +
-'<div class="js-doktresult-form" value="'+ counter +'">' +
+'<div class="js-doktresult-form w3-animate-opacity" value="'+ counter +'">' +
 '<button class="deleteDokt">'+'Delete Docket'+'</button>'+
 //'<h2>Search Number:</h2>'+'<p><span class="searchNum"></span></p>'+
  '<br>'+
@@ -75,8 +75,8 @@ function getMoreDataFromAPI(searchTerm, callback){
     $.getJSON(DOKT_SEARCH_URL, queri, callback).fail(function() { 
       $(theForm).find(".js-resultMessage").hide();
       hideLoader();
-      $('.js-errorMessage').text("Unfortunately this content is not available yet, and/or, the requested Docket belongs to an agency that does not participate in the Federal eRulemaking Program."); 
-
+      $('.js-errorMessage').text("Unfortunately the requested Docket is not available yet."); 
+      $(".js-errorMessage").show();
        }); 
 
 
@@ -154,13 +154,13 @@ function watchSubmito() {
 
    $('.js-doktsearch-form').submit(function(event) {
       $(".js-errorMessage").hide();
+      $(".js-resultMessage").hide();
     $(".loader").show();
     event.preventDefault();
   var queriTarget = $(event.currentTarget).find('.js-doktquery-text');
   var queri = queriTarget.val();
     // clear out the input
     queriTarget.val("");
-    $(".js-errorMessage").show();
     getMoreDataFromAPI(queri, displayDoktSearchData);
   });
 }
